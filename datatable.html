@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+          <table class="table table-bordered table-hover" id="tab_logic">
+            <thead>
+              <tr>
+                <th class="text-center">Date</th>
+                <th class="text-center">Shift</th>
+                <th class="text-center">Shovel</th>
+                <th class="text-center">Material</th>
+                <th class="text-center">85 trips</th>
+                <th class="text-center">100 trips</th>
+                <th class="text-center">120 trips</th>
+                <th class="text-center">190 trips</th>
+                <th class="text-center">Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="addr0">
+
+                <td>
+                  <input id="proddate"
+                    type="date"
+                    name="date[]"
+                    placeholder="date"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <select id= "shift" class="form-control">
+                    <option name="shift" class="hidden" selected disabled>
+                    Shift
+                    </option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </td>
+
+                <td>
+                  <select id= "shv" class="form-control">
+                    <option name="shovel" class="hidden" selected disabled>
+                      Shovel
+                    </option>
+                    <option>P&H-11</option>
+                    <option>P&H-12</option>
+                    <option>P&H-13</option>
+                    <option>P&H-14</option>
+                    <option>P&H-15</option>
+                    <option>P&H-16</option>
+                    <option>P&H-17</option>
+                    <option>P&H-18</option>
+                    <option>P&H-19</option>
+                    <option>Him</option>
+                    <option>Tata PC</option>
+                    <option>Komtsu</option>
+                    <option>Laxman</option>
+                    <option>PC650</option>
+                  </select>
+                </td>
+                <td>
+                    <select id= "mat" class="form-control">
+                      <option name="Material" class="hidden" selected disabled>
+                        Material
+                      </option>
+                      <option>Coal</option>
+                      <option>OB</option>
+                    </select>
+                  </td>
+                <td>
+                  <input id ="85t"
+                    type="number"
+                    name="85t[]"
+                    placeholder="trip"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input id ="100t"
+                    type="number"
+                    name="100t[]"
+                    placeholder="trip"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input id ="120t"
+                    type="number"
+                    name="120t[]"
+                    placeholder="trip"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input id ="190t"
+                    type="number"
+                    name="190t[]"
+                    placeholder="trip"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <select id="loc" name="location" class="form-control">
+                    <option class="hidden" selected disabled>
+                      Select Shovel
+                    </option>
+                    <option>Purewa Top-East</option>
+                    <option>Purewa Bottom-East</option>
+                    <option>Turra-East</option>
+                    <option>Purewa Top-West</option>
+                    <option>Purewa Bottom-West</option>
+                    <option>Turra-West</option>
+                    <option>OB-East</option>
+                    <option>OB-West</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="addr1"></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button id="add_row" class="btn btn-default pull-left">Add Row</button
+      ><button id="delete_row" class="pull-right btn btn-default">
+        Delete Row
+      </button>
+      <br />
+      <br />
+      <br />
+      <button type="button" id="submit" class="btn btn-success">Submit</button>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      var i = 1;
+      $("#add_row").click(function () {
+        b = i - 1;
+        $("#addr" + i)
+          .html($("#addr" + b).html())
+          .find("td:first-child")
+          .html(i + 1);
+        $("#tab_logic").append('<tr id="addr' + (i + 1) + '"></tr>');
+        i++;
+      });
+      $("#delete_row").click(function () {
+        if (i > 1) {
+          $("#addr" + (i - 1)).html("");
+          i--;
+        }
+      });
+    });
+  </script>
+</html>
